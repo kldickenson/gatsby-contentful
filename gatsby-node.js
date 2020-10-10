@@ -1,10 +1,3 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
 const path = require("path")
 const slash = require("slash")
 
@@ -13,7 +6,7 @@ exports.createPages = ({ graphql, actions }) => {
   return graphql(
     `
       {
-        allMarkdownRemark {
+        allMarkdownRemark(filter: { frontmatter: { slug: { ne: null } } }) {
           edges {
             node {
               id
@@ -22,6 +15,14 @@ exports.createPages = ({ graphql, actions }) => {
                 slug
                 title
               }
+            }
+          }
+        }
+        allContentfulEvents {
+          edges {
+            node {
+              id
+              slug
             }
           }
         }
@@ -41,6 +42,18 @@ exports.createPages = ({ graphql, actions }) => {
           component: slash(blogPostTemplate),
           context: {
             slug: edge.node.frontmatter.slug,
+            id: edge.node.id,
+          },
+        })
+      })
+
+      const eventTemplate = path.resolve("./src/templates/event.js")
+      result.data.allContentfulEvents.edges.forEach(edge => {
+        createPage({
+          path: `/event/${edge.node.slug}`,
+          component: slash(eventTemplate),
+          context: {
+            slug: edge.node.slug,
             id: edge.node.id,
           },
         })
