@@ -1,12 +1,14 @@
 module.exports = {
   siteMetadata: {
     title: "My Events",
-    description: "A place to find all the information about our cool events.",
+    description: "A place to find all the information about our events.",
     author: "@micleners",
   },
   plugins: [
-    "gatsby-plugin-styled-components",
     "gatsby-plugin-react-helmet",
+    "gatsby-transformer-remark",
+    "gatsby-plugin-styled-components",
+    "gatsby-transformer-json",
     {
       resolve: "gatsby-source-filesystem",
       options: {
@@ -14,11 +16,18 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    "gatsby-transformer-json",
     {
       resolve: "gatsby-source-filesystem",
       options: {
-        path: "./src/static/",
+        name: "markdown",
+        path: `${__dirname}/src/markdown`,
+      },
+    },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        name: "static",
+        path: `${__dirname}/src/static`,
       },
     },
     "gatsby-transformer-sharp",
