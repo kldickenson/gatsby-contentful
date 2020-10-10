@@ -1,0 +1,28 @@
+[
+  {
+    "name": "Sally",
+    "role": "Treasurer",
+    "phone": "555-555-5555",
+    "website": "https://www.contentful.com",
+    "photo": "https://randomuser.me/api/portraits/women/75.jpg",
+    "email": "sally@example.com",
+    "employer": "Self"
+  },
+  {
+    "name": "Bill",
+    "role": "Sponsorship",
+    "phone": "555-555-5555",
+    "website": "https://www.netlify.com",
+    "photo": "https://randomuser.me/api/portraits/men/75.jpg",
+    "email": "bill@example.com",
+    "employer": "Microsoft"
+  },
+  {
+    "name": "Danni",
+    "role": "Speaker Coordinator",
+    "phone": "555-555-5555",
+    "email": "danni@example.com",
+    "photo": "https://randomuser.me/api/portraits/women/39.jpg",
+    "employer": "Github"
+  }
+]
